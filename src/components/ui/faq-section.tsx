@@ -36,7 +36,7 @@ function FAQSection() {
     {
       question: "When will the platform be available?",
       answer:
-        "Beta access starts in March 2024 for the first 500 waitlist members. Full launch is planned for May 2024. Join the waitlist to be among the first to experience the platform.",
+        "Beta access starts in Aug 2025 for the first 500 waitlist members. Full launch is planned for Sep 2025. Join the waitlist to be among the first to experience the platform.",
     },
   ]
 

@@ -33,7 +33,7 @@ function FounderSection() {
               <h3 className="text-xl font-semibold text-white mb-2">Grant Denmark</h3>
               <p className="text-yellow-500 mb-2">Founder & CEO</p>
               <p className="text-gray-400 text-sm">
-                Former Strategy Director at McKinsey • Built 3 successful exits • 15+ years in business intelligence
+                Former Strategy Director at Sleft • Built 2 successful exits • 2+ years in business intelligence
               </p>
             </div>
           </div>
