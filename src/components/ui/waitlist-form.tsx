@@ -95,7 +95,7 @@ function WaitlistForm() {
             <span className="text-sm text-yellow-500 font-medium">Limited Early Access</span>
           </div>
           <h1 className="relative z-10 text-3xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white via-yellow-100 to-yellow-500 text-center font-sans font-bold mb-4">
-            Join the Elite Circle
+            Experience Next-Level Business Intelligence
           </h1>
         </motion.div>
 
