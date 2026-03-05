@@ -10,7 +10,7 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, name, company, socialHandle, notes } = await request.json()
+    const { email, name, phone } = await request.json()
 
     if (!email || !name) {
       return NextResponse.json({ error: "Email and name are required" }, { status: 400 })
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     }
 
     const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE_NAME)}`
-    console.log("Attempting to add to Airtable:", { email, name, company, socialHandle, notes })
+    console.log("Attempting to add to Airtable:", { email, name, phone })
     console.log("Airtable URL:", airtableUrl)
     console.log("Token prefix:", AIRTABLE_API_KEY?.substring(0, 10) + "...")
 
@@ -43,9 +43,7 @@ export async function POST(request: NextRequest) {
           fields: {
             Email: email,
             Name: name,
-            Company: company || "",
-            "Social Handle": socialHandle || "",
-            Notes: notes || "",
+            Phone: phone || "",
             Status: "Pending",
           },
         }),

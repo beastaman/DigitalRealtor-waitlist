@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,9 +12,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
 export const metadata: Metadata = {
   title: "Digital Realtor – AI-Powered Content Creation for Realtors",
-  description: "Turn your ideas into ready-to-post content with AI. Get content angles, scripts, captions, post formats, and a posting plan tailored to your audience.",
+  description:
+    "Turn your ideas into ready-to-post content with AI. Get content angles, scripts, captions, post formats, and a posting plan tailored to your audience.",
 };
 
 export default function RootLayout({
@@ -25,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >
         {children}
       </body>
