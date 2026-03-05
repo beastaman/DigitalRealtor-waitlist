@@ -92,10 +92,10 @@ function FinalCTASection() {
             className="text-4xl lg:text-7xl font-bold mb-8 leading-tight"
           >
             <span className="bg-gradient-to-r from-white via-yellow-100 to-yellow-500 bg-clip-text text-transparent">
-              Don't Miss Out
+              Build Your Brand
             </span>
             <br />
-            <span className="text-white">On The Future</span>
+            <span className="text-white">Without the Hassle</span>
           </motion.h1>
 
           {/* Countdown Timer */}
@@ -127,23 +127,23 @@ function FinalCTASection() {
             className="mb-12"
           >
             <p className="text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Join the exclusive group of business leaders who will get{" "}
-              <span className="text-yellow-500 font-semibold">first access</span> to the most powerful B2B intelligence
-              platform ever created.
+              Join the exclusive group of realtors and creators who will get{" "}
+              <span className="text-yellow-500 font-semibold">first access</span> to the most powerful AI content
+              platform for real estate professionals.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
               <div className="flex items-center gap-3 text-left">
                 <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
-                <span className="text-gray-300">Free beta access (worth $500)</span>
+                <span className="text-gray-300">Unlimited AI content generation</span>
               </div>
               <div className="flex items-center gap-3 text-left">
                 <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
-                <span className="text-gray-300">50% off first year pricing</span>
+                <span className="text-gray-300">Early access pricing locked in</span>
               </div>
               <div className="flex items-center gap-3 text-left">
                 <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
-                <span className="text-gray-300">Priority customer support</span>
+                <span className="text-gray-300">Priority onboarding support</span>
               </div>
             </div>
           </motion.div>
@@ -163,25 +163,25 @@ function FinalCTASection() {
               className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold text-xl rounded-full transition-all duration-300 shadow-2xl shadow-yellow-500/25"
             >
               <Sparkles className="w-6 h-6" />
-              Claim My Exclusive Access
+              Start Creating Now
               <ArrowRight className="w-6 h-6" />
             </motion.a>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-400">
               <div className="flex items-center gap-2">
                 <Users className="w-5 h-5 text-yellow-500" />
-                <span className="text-sm">2,847 businesses already joined</span>
+                <span className="text-sm">Thousands of creators already joined</span>
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="w-5 h-5 text-yellow-500" />
-                <span className="text-sm">Only 153 spots remaining</span>
+                <span className="text-sm">Limited early access spots</span>
               </div>
             </div>
 
             <p className="text-sm text-gray-500 max-w-2xl mx-auto">
-              By joining our waitlist, you're not just getting early access to a product—you're becoming part of a
-              revolution in how businesses discover opportunities and build strategic partnerships. The future of
-              business intelligence starts here.
+              By joining our waitlist, you're securing your spot in the future of real estate content creation. You
+              handle the face-to-face. Your new AI content team will handle the rest. Join thousands of realtors
+              already building stronger brands with far less effort.
             </p>
           </motion.div>
         </motion.div>
@@ -194,11 +194,11 @@ function FinalCTASection() {
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
-          <p className="text-gray-400 text-sm mb-6">Trusted by industry leaders</p>
+          <p className="text-gray-400 text-sm mb-6">Trusted by creators on all major platforms</p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-40">
-            {["Microsoft", "Google", "Amazon", "Tesla", "Apple"].map((company, index) => (
+            {["Instagram", "TikTok", "YouTube", "LinkedIn", "Facebook"].map((platform, index) => (
               <span key={index} className="text-gray-500 font-semibold text-lg">
-                {company}
+                {platform}
               </span>
             ))}
           </div>

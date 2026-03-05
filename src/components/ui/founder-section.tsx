@@ -17,23 +17,26 @@ function FounderSection() {
           <div className="mb-8">
             <Quote className="w-12 h-12 text-yellow-500 mx-auto mb-6" />
             <blockquote className="text-2xl lg:text-3xl text-gray-300 font-light leading-relaxed mb-8">
-              "After building and scaling multiple businesses, I realized the biggest challenge wasn't having great
-              ideas—it was knowing which opportunities to pursue and finding the right partners to make it happen.
-              That's why we built Sleft Signals."
+              "I've helped realtors generate over $300M in sales by building powerful personal brands on social media.
+              The biggest problem wasn't talent — it was consistency. That's why I built Digital Realtor: to give every
+              agent an AI content team that never sleeps."
             </blockquote>
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             <img
-              src="/images/founder.jpeg"
-              alt="Grant Denmark - Founder & CEO"
+              src="/images/founder.jpg"
+              alt="Abdelrahman Abd Rabou - Founder"
               className="w-24 h-24 rounded-full border-4 border-yellow-500/30 object-cover"
             />
             <div className="text-center md:text-left">
-              <h3 className="text-xl font-semibold text-white mb-2">Grant Denmark</h3>
-              <p className="text-yellow-500 mb-2">Founder & CEO</p>
+              <h3 className="text-xl font-semibold text-white mb-2">Abdelrahman Abd Rabou</h3>
+              <p className="text-yellow-500 mb-2">Founder — Digital Realtor & A-Team Management</p>
+              <p className="text-gray-400 text-sm mb-2">
+                @tamerbranding on Instagram • 14.3K followers • 180 posts
+              </p>
               <p className="text-gray-400 text-sm">
-                Former Strategy Director at Sleft • Built 2 successful exits • 2+ years in business intelligence
+                I help realtors build a personal brand • $300M+ in Sales Generated in 2025
               </p>
             </div>
           </div>
@@ -46,9 +49,10 @@ function FounderSection() {
             className="mt-12 p-6 bg-yellow-500/5 border border-yellow-500/20 rounded-xl"
           >
             <p className="text-gray-300 leading-relaxed">
-              <strong className="text-yellow-500">Our Promise:</strong> We're not just building another analytics tool.
-              We're creating a platform that connects the dots between data, opportunities, and the right people to make
-              things happen. Every feature we build is tested with real businesses facing real challenges.
+              <strong className="text-yellow-500">About Us:</strong> Our platform is your AI-powered content partner that
+              helps you create, plan, and grow across social media. We combine smart content automation with
+              creator-focused workflows to make content creation faster, easier, and more consistent for everyone.
+              You handle the face-to-face. Your new AI content team will handle the rest.
             </p>
           </motion.div>
         </motion.div>

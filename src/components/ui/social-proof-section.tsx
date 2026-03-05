@@ -6,32 +6,44 @@ import { useState } from "react"
 
 function SocialProofSection() {
   const companies = [
-    { name: "Microsoft", logo: "/images/companies/microsoft.png" },
-    { name: "Google", logo: "/images/companies/google.png" },
-    { name: "Amazon", logo: "/images/companies/amazon.png" },
-    { name: "Tesla", logo: "/images/companies/tesla.png" },
-    { name: "Apple", logo: "/images/companies/apple.png" },
-    { name: "Slack", logo: "/images/companies/slack.png" },
+    { name: "Instagram" },
+    { name: "TikTok" },
+    { name: "YouTube" },
+    { name: "LinkedIn" },
+    { name: "Facebook" },
+    { name: "X (Twitter)" },
   ]
 
   const testimonials = [
     {
-      quote: "This platform revealed opportunities we never knew existed. Our revenue increased 40% in just 3 months.",
-      author: "Sarah Chen",
-      role: "CEO, TechCorp",
-      avatar: "/images/testimonials/sarah-chen.jpg",
+      quote: "Agents in every market are building stronger brands and attracting more clients with far less effort.",
+      author: "Albert Flores",
+      role: "Senior Dentist",
+      avatar: "/images/testimonials/albert-flores.jpg",
     },
     {
-      quote: "The AI insights are incredibly accurate. It's like having a team of consultants working 24/7.",
-      author: "Michael Rodriguez",
-      role: "Strategy Director, InnovateLab",
-      avatar: "/images/testimonials/michael-rodriguez.jpg",
+      quote: "Managing clients is so much easier. One dashboard replaced multiple tools and saved me hours.",
+      author: "Brooklyn Simmons",
+      role: "Orthodontics",
+      avatar: "/images/testimonials/brooklyn-simmons.jpg",
     },
     {
-      quote: "Found our perfect strategic partner through their connection recommendations. Game-changing!",
-      author: "Emily Watson",
-      role: "Founder, GrowthCo",
-      avatar: "/images/testimonials/emily-watson.jpg",
+      quote: "This gave me a real content system. I know what to post, when, and why — no more guesswork.",
+      author: "Monika Roy",
+      role: "Dental Hygienist",
+      avatar: "/images/testimonials/monika-roy.jpg",
+    },
+    {
+      quote: "The AI content suggestions are spot-on. It's like having a creative team working 24/7 for my practice.",
+      author: "Sarah Johnson",
+      role: "Practice Manager",
+      avatar: "/images/testimonials/sarah-johnson.jpg",
+    },
+    {
+      quote: "Social media marketing became effortless. The automated posting schedule keeps my practice visible.",
+      author: "Michael Chen",
+      role: "Cosmetic Dentist",
+      avatar: "/images/testimonials/michael-chen.jpg",
     },
   ]
 
@@ -46,7 +58,7 @@ function SocialProofSection() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-b from-black to-gray-900/30">
+    <section className="py-20 bg-gradient-to-b from-black to-gray-900/30" id="testimonials">
       <div className="container mx-auto px-4">
         {/* Company Logos */}
         <motion.div
@@ -56,12 +68,12 @@ function SocialProofSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-gray-400 text-sm mb-8 uppercase tracking-wider">Trusted by forward-thinking companies</p>
+          <p className="text-gray-400 text-sm mb-8 uppercase tracking-wider">Create content for all major platforms</p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
             {companies.map((company, index) => (
               <motion.div
                 key={index}
-                className="h-10 flex items-center justify-center text-gray-400 font-semibold"
+                className="h-10 flex items-center justify-center text-gray-400 font-semibold text-lg"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -71,6 +83,24 @@ function SocialProofSection() {
               </motion.div>
             ))}
           </div>
+        </motion.div>
+
+        {/* Testimonials heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl lg:text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-white via-yellow-100 to-yellow-500 bg-clip-text text-transparent">
+              What Our Users Say
+            </span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Join thousands of content creators who are already transforming their social media presence.
+          </p>
         </motion.div>
 
         {/* Testimonials */}

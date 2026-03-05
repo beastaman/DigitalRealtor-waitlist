@@ -1,36 +1,36 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Calendar, Rocket, Users, Zap } from "lucide-react"
+import { Lightbulb, PenLine, BarChart2, BookOpen } from "lucide-react"
 
 function TimelineSection() {
   const timeline = [
     {
-      icon: <Users className="w-6 h-6 text-yellow-500" />,
-      title: "Join Waitlist",
-      description: "Secure your spot and get exclusive updates",
-      date: "Now",
+      icon: <Lightbulb className="w-6 h-6 text-yellow-500" />,
+      title: "Generate Ideas",
+      description: "Chat with the AI to get tailored content ideas for your niche, audience, or goals. Example: \"I want to create a video for gym beginners.\" → AI gives 3–5 strong angles.",
+      date: "Step 1",
       status: "active",
     },
     {
-      icon: <Zap className="w-6 h-6 text-yellow-500" />,
-      title: "Beta Access",
-      description: "First 500 users get free beta access",
-      date: "Aug 2025",
+      icon: <PenLine className="w-6 h-6 text-yellow-500" />,
+      title: "Create Your Content",
+      description: "Pick an idea → AI helps write scripts, captions, and hooks. Customize via Post Maker, then save to your storage.",
+      date: "Step 2",
       status: "upcoming",
     },
     {
-      icon: <Rocket className="w-6 h-6 text-yellow-500" />,
-      title: "Full Launch",
-      description: "Complete platform with all features",
-      date: "Sep 2025",
+      icon: <BarChart2 className="w-6 h-6 text-yellow-500" />,
+      title: "Post & Grow",
+      description: "Schedule posts, track performance, and learn what works with AI analytics. Get suggestions to boost views, engagement, and follower growth.",
+      date: "Step 3",
       status: "upcoming",
     },
     {
-      icon: <Calendar className="w-6 h-6 text-yellow-500" />,
-      title: "Enterprise",
-      description: "Advanced features for large organizations",
-      date: "Oct 2025",
+      icon: <BookOpen className="w-6 h-6 text-yellow-500" />,
+      title: "Learn and Improve",
+      description: "Access a full tutorial library that teaches you personal branding and guides you in using the platform to its full potential.",
+      date: "Step 4",
       status: "upcoming",
     },
   ]
@@ -47,11 +47,11 @@ function TimelineSection() {
         >
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-white via-yellow-100 to-yellow-500 bg-clip-text text-transparent">
-              Launch Timeline
+              How It Works
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Here's what to expect as we build the future of business intelligence together.
+            From idea to published post in four simple steps — powered by AI, built for creators.
           </p>
         </motion.div>
 

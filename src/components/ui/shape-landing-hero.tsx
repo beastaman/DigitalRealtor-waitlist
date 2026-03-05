@@ -174,7 +174,7 @@ function HeroGeometric({
             transition={{ delay: 0.9 }}
           >
             <p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
-              Connecting your business to the most lucrative opportunities you never knew existed.
+              Give the AI your idea, niche, or topic and instantly get content angles, scripts, captions, and a posting plan tailored to your audience.
             </p>
           </motion.div>
         </div>

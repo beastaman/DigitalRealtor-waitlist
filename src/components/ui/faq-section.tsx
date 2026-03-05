@@ -9,34 +9,34 @@ function FAQSection() {
 
   const faqs = [
     {
-      question: "What exactly is Sleft Signals?",
+      question: "What exactly is Digital Realtor?",
       answer:
-        "Sleft Signals is an AI-powered business intelligence platform that analyzes your business data, market trends, and competitive landscape to provide actionable insights, strategic recommendations, and valuable business connections.",
+        "Digital Realtor is an AI-powered content creation platform that helps realtors and content creators turn ideas into ready-to-post content. You give the AI your idea, niche, or topic and instantly get content angles, scripts, captions, post formats, and a complete posting plan tailored to your audience.",
     },
     {
-      question: "How does the AI analysis work?",
+      question: "How does the AI content creation work?",
       answer:
-        "Our platform uses GPT-4 and advanced machine learning algorithms to analyze your business data, industry trends, and market conditions. It then generates personalized strategy briefs with competitive analysis, growth opportunities, and partnership recommendations.",
+        "Simply tell the AI your idea or niche — for example, \"I want to create a video for first-time home buyers.\" The AI generates 3–5 strong content angles, writes scripts, captions, and hooks, and formats them for your chosen platform. You then customize it in the Post Maker and schedule it.",
     },
     {
-      question: "Is my business data secure?",
+      question: "Which platforms does Digital Realtor support?",
       answer:
-        "Absolutely. We use enterprise-grade security measures including end-to-end encryption, secure data centers, and strict access controls. Your data is never shared with third parties and you maintain full ownership of your information.",
+        "Digital Realtor supports all major social media platforms including Instagram, TikTok, YouTube, LinkedIn, Facebook, and X (Twitter). You get multi-platform post templates so your content is always formatted correctly for each channel.",
     },
     {
-      question: "What kind of businesses can benefit from this?",
+      question: "Do I need any prior content creation experience?",
       answer:
-        "Sleft Signals is designed for B2B companies of all sizes - from startups looking for their first strategic partnerships to enterprises seeking new market opportunities. We cover 50+ industries and adapt our insights to your specific business context.",
+        "Not at all! Digital Realtor is designed for busy realtors and professionals who want to build a personal brand without spending hours creating content. The tutorial library guides you through every step, from crafting your first post to advanced personal branding strategies.",
     },
     {
-      question: "How much will it cost?",
+      question: "What does it cost?",
       answer:
-        "We're still finalizing our pricing structure, but early access users will get significant discounts. Pricing will be based on company size and feature requirements, starting from $99/month for small businesses.",
+        "We offer two plans: $99.99/month for the monthly plan, or $999/year for the annual plan (save over 16%). Both include unlimited AI ideas and post generations, script and caption AI, unlimited saved content, multi-platform templates, and full analytics.",
     },
     {
-      question: "When will the platform be available?",
+      question: "When will the platform launch?",
       answer:
-        "Beta access starts in Aug 2025 for the first 500 waitlist members. Full launch is planned for Sep 2025. Join the waitlist to be among the first to experience the platform.",
+        "We're currently in early access. Join the waitlist to secure your spot and be among the first to get access when we launch. Early access members will receive special pricing and priority onboarding.",
     },
   ]
 
@@ -56,7 +56,7 @@ function FAQSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Everything you need to know about Sleft Signals and how it can transform your business.
+            Everything you need to know about Digital Realtor and how it can transform your content strategy.
           </p>
         </motion.div>
 

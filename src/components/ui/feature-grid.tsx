@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { motion } from "framer-motion"
-import { TrendingUp, Zap, Users, Brain, Target, Lock } from "lucide-react"
+import { TrendingUp, Zap, Users, Brain, Target, BookOpen } from "lucide-react"
 
 interface FeatureCardProps {
   icon: React.ReactNode
@@ -36,34 +36,34 @@ function FeatureCard({ icon, title, description, delay = 0 }: FeatureCardProps) 
 function FeatureGrid() {
   const features = [
     {
-      icon: <TrendingUp className="w-6 h-6 text-yellow-500" />,
-      title: "Competitive Edge Analysis",
-      description: "Discover your unique advantages and market positioning with AI-powered competitive intelligence.",
+      icon: <Brain className="w-6 h-6 text-yellow-500" />,
+      title: "AI Idea Generator",
+      description: "Chat with the AI to get tailored content ideas for your niche, audience, or goals. Get 3–5 strong content angles instantly.",
     },
     {
       icon: <Zap className="w-6 h-6 text-yellow-500" />,
-      title: "Growth Opportunities",
-      description: "Identify untapped revenue streams and expansion opportunities tailored to your business.",
-    },
-    {
-      icon: <Users className="w-6 h-6 text-yellow-500" />,
-      title: "Strategic Connections",
-      description: "Get warm introductions to potential partners, customers, and strategic tools.",
-    },
-    {
-      icon: <Brain className="w-6 h-6 text-yellow-500" />,
-      title: "AI-Powered Insights",
-      description: "Receive consultant-grade strategy briefs powered by GPT-4 and real business data.",
+      title: "Script & Caption AI",
+      description: "Pick an idea and let AI write scripts, captions, and hooks. Advanced prompts and formats for every platform.",
     },
     {
       icon: <Target className="w-6 h-6 text-yellow-500" />,
-      title: "Precision Targeting",
-      description: "Get laser-focused recommendations based on your industry, location, and goals.",
+      title: "Post Maker",
+      description: "Customize your content via the Post Maker, then save to your storage. Multi-platform post templates included.",
     },
     {
-      icon: <Lock className="w-6 h-6 text-yellow-500" />,
-      title: "Enterprise Security",
-      description: "Your business data is protected with enterprise-grade security and privacy measures.",
+      icon: <TrendingUp className="w-6 h-6 text-yellow-500" />,
+      title: "AI Analytics & Growth",
+      description: "Schedule posts, track performance, and learn what works. Get AI suggestions to boost views, engagement, and follower growth.",
+    },
+    {
+      icon: <Users className="w-6 h-6 text-yellow-500" />,
+      title: "Unlimited Content Storage",
+      description: "Save unlimited AI-generated ideas, scripts, and posts organized in folders. Your entire content library in one place.",
+    },
+    {
+      icon: <BookOpen className="w-6 h-6 text-yellow-500" />,
+      title: "Tutorial Library",
+      description: "Access a full tutorial library that teaches personal branding and guides you in using the platform to its full potential.",
     },
   ]
 
@@ -79,11 +79,11 @@ function FeatureGrid() {
         >
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-white via-yellow-100 to-yellow-500 bg-clip-text text-transparent">
-              Powerful AI Features
+              Everything You Need to Create & Grow
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Everything you need to unlock your business potential and accelerate growth with AI-powered intelligence.
+            Your AI-powered content partner that helps you create, plan, and grow across social media — faster, easier, and more consistently.
           </p>
         </motion.div>
 

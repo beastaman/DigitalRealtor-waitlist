@@ -6,13 +6,15 @@ import { motion } from "framer-motion"
 import { BackgroundBeams } from "@/components/ui/background-beams"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Sparkles, Mail, CheckCircle, Building, User } from "lucide-react"
+import { Sparkles, Mail, CheckCircle, Instagram, User, Building2 } from "lucide-react"
 
 function WaitlistForm() {
   const [formData, setFormData] = useState({
     email: "",
     name: "",
     company: "",
+    socialHandle: "",
+    notes: "",
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -35,7 +37,7 @@ function WaitlistForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ name: formData.name, email: formData.email, company: formData.company, socialHandle: formData.socialHandle, notes: formData.notes }),
       })
 
       if (response.ok) {
@@ -63,10 +65,10 @@ function WaitlistForm() {
         >
           <CheckCircle className="w-16 h-16 text-yellow-500 mx-auto mb-6" />
           <h1 className="relative z-10 text-3xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white via-yellow-100 to-yellow-500 text-center font-sans font-bold mb-4">
-            Welcome to the Future!
+            You're In — Let's Create!
           </h1>
           <p className="text-gray-300 max-w-lg mx-auto text-lg text-center relative z-10 mb-6">
-            You're now part of an exclusive group of forward-thinking business leaders. Check your email for next steps!
+            You're now part of an exclusive group of forward-thinking realtors and content creators. Check your email for next steps!
           </p>
           <div className="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/20 rounded-full px-4 py-2">
             <Sparkles className="w-4 h-4 text-yellow-500" />
@@ -81,7 +83,7 @@ function WaitlistForm() {
   return (
     <div
       id="waitlist"
-      className="h-[50rem] w-full rounded-md bg-black relative flex flex-col items-center justify-center antialiased"
+      className="min-h-[54rem] w-full rounded-md bg-black relative flex flex-col items-center justify-center antialiased py-12"
     >
       <div className="max-w-2xl mx-auto p-4">
         <motion.div
@@ -95,7 +97,7 @@ function WaitlistForm() {
             <span className="text-sm text-yellow-500 font-medium">Limited Early Access</span>
           </div>
           <h1 className="relative z-10 text-3xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white via-yellow-100 to-yellow-500 text-center font-sans font-bold mb-4">
-            Experience Next-Level Business Intelligence
+            Turn Your Ideas into Ready-to-Post Content
           </h1>
         </motion.div>
 
@@ -105,8 +107,8 @@ function WaitlistForm() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-gray-300 max-w-lg mx-auto my-6 text-lg text-center relative z-10"
         >
-          Get exclusive early access to the most powerful B2B intelligence platform. Connect with strategic partners,
-          discover hidden opportunities, and accelerate your growth.
+          Get exclusive early access to Digital Realtor — the AI content platform built for realtors. Create scripts,
+          captions, and posts in minutes, not hours.
         </motion.p>
 
         <motion.form
@@ -129,12 +131,12 @@ function WaitlistForm() {
               />
             </div>
             <div className="relative flex-1">
-              <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Instagram className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
               <Input
                 type="text"
-                placeholder="Company name"
-                value={formData.company}
-                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                placeholder="Instagram / Social handle (optional)"
+                value={formData.socialHandle}
+                onChange={(e) => setFormData({ ...formData, socialHandle: e.target.value })}
                 className="pl-10 h-12 bg-black/50 border-yellow-500/30 text-white placeholder:text-gray-400 focus:border-yellow-500 focus:ring-yellow-500/20"
               />
             </div>
@@ -145,31 +147,52 @@ function WaitlistForm() {
               <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
               <Input
                 type="email"
-                placeholder="Business email address"
+                placeholder="Business email address *"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="pl-10 h-12 bg-black/50 border-yellow-500/30 text-white placeholder:text-gray-400 focus:border-yellow-500 focus:ring-yellow-500/20"
+                className="pl-10 h-12 bg-black/50 border-yellow-500/30 text-white placeholder:text-gray-400 focus:border-yellow-500 focus:ring-yellow-500/20 w-full"
                 required
               />
             </div>
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="h-12 px-8 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold disabled:opacity-50 whitespace-nowrap"
-            >
-              {isLoading ? (
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
-                  Securing Spot...
-                </div>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4" />
-                  Secure My Spot
-                </div>
-              )}
-            </Button>
+            <div className="relative flex-1">
+              <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Input
+                type="text"
+                placeholder="Company name (optional)"
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                className="pl-10 h-12 bg-black/50 border-yellow-500/30 text-white placeholder:text-gray-400 focus:border-yellow-500 focus:ring-yellow-500/20"
+              />
+            </div>
           </div>
+
+          <div className="relative">
+            <textarea
+              placeholder="What's your niche or biggest content challenge? (optional)"
+              value={formData.notes}
+              onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+              rows={3}
+              className="w-full px-4 py-3 bg-black/50 border border-yellow-500/30 text-white placeholder:text-gray-400 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/20 rounded-md resize-none outline-none text-sm"
+            />
+          </div>
+
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="w-full h-12 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold disabled:opacity-50"
+          >
+            {isLoading ? (
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                Securing Spot...
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4" />
+                Secure My Spot
+              </div>
+            )}
+          </Button>
 
           {error && <p className="text-red-400 text-sm text-center">{error}</p>}
         </motion.form>
@@ -184,7 +207,7 @@ function WaitlistForm() {
           <div className="flex items-center justify-center gap-4 text-xs text-gray-400">
             <span>✓ No spam, ever</span>
             <span>✓ Unsubscribe anytime</span>
-            <span>✓ Early access guaranteed</span>
+            <span>✓ Early access priority</span>
           </div>
         </motion.div>
       </div>
