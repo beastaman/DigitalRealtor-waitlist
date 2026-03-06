@@ -5,7 +5,7 @@ import { Quote } from "lucide-react"
 
 function FounderSection() {
   return (
-    <section className="py-20 bg-[#0B0B0B]">
+    <section className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,7 +46,8 @@ function FounderSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-12 p-6 bg-[#174AFF]/5 border border-[#174AFF]/15 rounded-xl"
+            className="mt-12 p-6 rounded-xl border border-white/10"
+            style={{ background: "rgba(33,33,33,0.6)" }}
           >
             <p className="text-gray-300 leading-relaxed font-manrope">
               <strong className="text-[#174AFF]">About Us:</strong> Our platform is your AI-powered content partner that

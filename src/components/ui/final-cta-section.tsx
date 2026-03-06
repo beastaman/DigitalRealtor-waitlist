@@ -5,62 +5,32 @@ import { useState, useEffect } from "react"
 import { Sparkles, Clock, Zap, ArrowRight, CheckCircle } from "lucide-react"
 
 function FinalCTASection() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 7,
-    hours: 12,
-    minutes: 30,
-    seconds: 45,
-  })
+  const [timeLeft, setTimeLeft] = useState({ days: 7, hours: 12, minutes: 30, seconds: 45 })
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 }
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 }
-        } else if (prev.hours > 0) {
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 }
-        } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 }
-        }
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 }
+        else if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 }
+        else if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 }
+        else if (prev.days > 0) return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 }
         return prev
       })
     }, 1000)
-
     return () => clearInterval(timer)
   }, [])
 
   return (
-    <section className="relative py-32 bg-[#0B0B0B] overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#174AFF]/[0.04] via-transparent to-[#174AFF]/[0.04]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(23,74,255,0.08)_0%,transparent_70%)]" />
-        <div className="absolute bottom-0 left-[-36px] w-[454px] h-[315px] -rotate-[89.89deg] rounded-[170px] bg-gradient-brand blur-[250px] opacity-20" />
-        <div className="absolute top-[-100px] right-[95px] w-[400px] h-[400px] rounded-full bg-gradient-blue blur-[120px] opacity-20" />
-      </div>
-
+    <section className="relative py-32 bg-transparent overflow-hidden">
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1.5 h-1.5 bg-[#174AFF]/30 rounded-full"
-            animate={{
-              y: [-20, -100],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: i * 0.25,
-              ease: "easeOut",
-            }}
-            style={{
-              left: `${(i * 7) % 100}%`,
-              top: "100%",
-            }}
+            animate={{ y: [-20, -100], opacity: [0, 1, 0] }}
+            transition={{ duration: 3, repeat: Infinity, delay: i * 0.25, ease: "easeOut" }}
+            style={{ left: `${(i * 7) % 100}%`, top: "100%" }}
           />
         ))}
       </div>
@@ -79,13 +49,14 @@ function FinalCTASection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-[#174AFF]/10 border border-[#174AFF]/25 rounded-full px-4 py-2 mb-8"
+            className="inline-flex items-center gap-2 border border-[#174AFF]/25 rounded-full px-4 py-2 mb-8"
+            style={{ background: "rgba(33,33,33,0.6)" }}
           >
             <Clock className="w-4 h-4 text-blue-400" />
             <span className="text-sm text-blue-400 font-medium font-manrope">Limited Time: Early Access Closing Soon</span>
           </motion.div>
 
-          {/* Main headline */}
+          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +71,7 @@ function FinalCTASection() {
             <span className="text-white">Without the Hassle</span>
           </motion.h1>
 
-          {/* Countdown timer */}
+          {/* Countdown */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +81,10 @@ function FinalCTASection() {
           >
             {Object.entries(timeLeft).map(([unit, value]) => (
               <div key={unit} className="text-center">
-                <div className="bg-white/[0.04] border border-[#174AFF]/20 rounded-lg p-4 min-w-[80px]">
+                <div
+                  className="border border-[#174AFF]/20 rounded-lg p-4 min-w-[80px]"
+                  style={{ background: "rgba(33,33,33,0.6)" }}
+                >
                   <div className="text-2xl lg:text-3xl font-bold text-[#174AFF] font-manrope">
                     {value.toString().padStart(2, "0")}
                   </div>
@@ -120,7 +94,7 @@ function FinalCTASection() {
             ))}
           </motion.div>
 
-          {/* Value proposition */}
+          {/* Value prop */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -133,13 +107,8 @@ function FinalCTASection() {
               <span className="text-[#174AFF] font-semibold">first access</span> to the most powerful AI content
               platform for real estate professionals.
             </p>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
-              {[
-                "Unlimited AI content generation",
-                "Early access pricing locked in",
-                "Priority onboarding support",
-              ].map((item) => (
+              {["Unlimited AI content generation", "Early access pricing locked in", "Priority onboarding support"].map((item) => (
                 <div key={item} className="flex items-center gap-3 text-left">
                   <CheckCircle className="w-6 h-6 text-[#174AFF] flex-shrink-0" />
                   <span className="text-gray-300 font-manrope">{item}</span>
@@ -167,14 +136,12 @@ function FinalCTASection() {
               Start Creating Now
               <ArrowRight className="w-6 h-6" />
             </motion.a>
-
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-400">
               <div className="flex items-center gap-2">
                 <Zap className="w-5 h-5 text-[#174AFF]" />
                 <span className="text-sm font-manrope">Limited early access spots</span>
               </div>
             </div>
-
             <p className="text-sm text-gray-600 max-w-2xl mx-auto font-manrope">
               By joining our waitlist, you&apos;re securing your spot in the future of real estate content creation. You
               handle the face-to-face. Your new AI content team will handle the rest.
@@ -182,7 +149,7 @@ function FinalCTASection() {
           </motion.div>
         </motion.div>
 
-        {/* Bottom platform logos */}
+        {/* Platform logos */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -193,9 +160,7 @@ function FinalCTASection() {
           <p className="text-gray-600 text-sm mb-6 font-manrope">Works with all major platforms</p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-30">
             {["Instagram", "TikTok", "YouTube", "LinkedIn", "Facebook"].map((platform, index) => (
-              <span key={index} className="text-gray-400 font-semibold text-lg font-manrope">
-                {platform}
-              </span>
+              <span key={index} className="text-gray-400 font-semibold text-lg font-manrope">{platform}</span>
             ))}
           </div>
         </motion.div>

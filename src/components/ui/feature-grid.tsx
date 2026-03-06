@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { motion } from "framer-motion"
 import { TrendingUp, Zap, Users, Brain, Target, BookOpen } from "lucide-react"
 
@@ -19,7 +18,8 @@ function FeatureCard({ icon, title, description, delay = 0 }: FeatureCardProps) 
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
-      className="group relative p-6 rounded-xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm hover:border-[#174AFF]/40 transition-all duration-300 hover:-translate-y-1"
+      className="group relative p-6 rounded-xl border border-white/[0.08] backdrop-blur-sm hover:border-[#174AFF]/40 transition-all duration-300 hover:-translate-y-1"
+      style={{ background: "rgba(33,33,33,0.6)" }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#174AFF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
       <div className="relative">
@@ -68,7 +68,7 @@ function FeatureGrid() {
   ]
 
   return (
-    <section className="py-20 bg-[#0B0B0B]">
+    <section className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

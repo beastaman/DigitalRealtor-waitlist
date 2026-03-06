@@ -1,9 +1,9 @@
 "use client"
 
 import { motion, Variants } from "framer-motion"
-import { Circle } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+// ─── Floating Blob Shape (matches Figma eclipse blobs) ───────────────────────
 function ElegantShape({
   className,
   delay = 0,
@@ -21,37 +21,20 @@ function ElegantShape({
 }) {
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-        y: -150,
-        rotate: rotate - 15,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        rotate: rotate,
-      }}
+      initial={{ opacity: 0, y: -150, rotate: rotate - 15 }}
+      animate={{ opacity: 1, y: 0, rotate: rotate }}
       transition={{
         duration: 2.4,
         delay,
-        ease: "easeOut",
+        ease: [0.23, 0.86, 0.39, 0.96],
         opacity: { duration: 1.2 },
       }}
-      className={cn("absolute", className)}
+      className={cn("absolute pointer-events-none", className)}
     >
       <motion.div
-        animate={{
-          y: [0, 15, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-        style={{
-          width,
-          height,
-        }}
+        animate={{ y: [0, 18, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        style={{ width, height }}
         className="relative"
       >
         <div
@@ -59,10 +42,11 @@ function ElegantShape({
             "absolute inset-0 rounded-full",
             "bg-gradient-to-r to-transparent",
             gradient,
-            "backdrop-blur-[2px] border-2 border-white/[0.10]",
-            "shadow-[0_8px_32px_0_rgba(23,74,255,0.15)]",
+            "backdrop-blur-[2px]",
+            "border border-white/[0.06]",
+            "shadow-[0_8px_48px_0_rgba(23,74,255,0.18)]",
             "after:absolute after:inset-0 after:rounded-full",
-            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(23,74,255,0.15),transparent_70%)]",
+            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(23,74,255,0.12),transparent_70%)]",
           )}
         />
       </motion.div>
@@ -70,115 +54,238 @@ function ElegantShape({
   )
 }
 
+// ─── Particle dot (subtle sparkle) ───────────────────────────────────────────
+function Particle({ delay, x, y }: { delay: number; x: string; y: string }) {
+  return (
+    <motion.div
+      className="absolute w-1 h-1 rounded-full bg-[#174AFF]/40 pointer-events-none"
+      style={{ left: x, top: y }}
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: [0, 0.8, 0], scale: [0, 1, 0] }}
+      transition={{ duration: 3, delay, repeat: Infinity, ease: "easeInOut" }}
+    />
+  )
+}
+
+// ─── Main Hero Component ──────────────────────────────────────────────────────
 function HeroGeometric({
-  badge = "Design Collective",
-  title1 = "Elevate Your Digital Vision",
-  title2 = "Crafting Exceptional Websites",
+  badge = "AI-Powered Content Creation",
+  title1 = "Turn Your Ideas into",
+  title2 = "Ready-to-Post Content",
+  subtitle = "Give the AI your idea, niche, or topic and instantly get content angles, scripts, captions, post formats, and a posting plan tailored to your audience.",
 }: {
   badge?: string
   title1?: string
   title2?: string
+  subtitle?: string
 }) {
-  const fadeUpVariants: Variants = {
-    hidden: {
-      opacity: 0,
-      y: 30
-    },
-    visible: {
+  const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 32 },
+    visible: (i = 0) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 1,
-        ease: "easeOut",
-      },
-    },
+      transition: { duration: 0.9, delay: i * 0.18, ease: [0.23, 0.86, 0.39, 0.96] },
+    }),
   }
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0B0B0B]">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/[0.04] via-transparent to-[#174AFF]/[0.04] blur-3xl" />
-      <div className="absolute inset-0 overflow-hidden">
-        <ElegantShape
-          delay={0.3}
-          width={600}
-          height={140}
-          rotate={12}
-          gradient="from-blue-500/[0.12]"
-          className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
+    <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#0b0b0b]">
+
+      {/* ── Background gradient mesh (exact from Figma) ── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Left purple-blue blob */}
+        <div
+          className="absolute rounded-[171px] blur-[250px] opacity-60"
+          style={{
+            top: "-68px", left: "-36px",
+            width: "454px", height: "315px",
+            background: "linear-gradient(180deg, #6a11cb, #2575fc)",
+            transform: "rotate(-89.9deg)",
+            transformOrigin: "0 0",
+          }}
         />
-        <ElegantShape
-          delay={0.5}
-          width={500}
-          height={120}
-          rotate={-15}
-          gradient="from-[#174AFF]/[0.12]"
-          className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
+        {/* Right pink-cyan blob */}
+        <div
+          className="absolute rounded-full blur-[200px] opacity-50"
+          style={{
+            top: "-222px", right: "95px",
+            width: "603px", height: "603px",
+            background: "linear-gradient(180deg, rgba(0,194,255,0), #ff29c3)",
+          }}
         />
-        <ElegantShape
-          delay={0.4}
-          width={300}
-          height={80}
-          rotate={-8}
-          gradient="from-blue-400/[0.10]"
-          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
+        {/* Right blue depth blob */}
+        <div
+          className="absolute blur-[200px] opacity-50"
+          style={{
+            top: "57px", right: "252px",
+            width: "290px", height: "411px",
+            background: "linear-gradient(180deg, rgba(24,75,255,0), #174aff)",
+          }}
         />
-        <ElegantShape
-          delay={0.6}
-          width={200}
-          height={60}
-          rotate={20}
-          gradient="from-[#174AFF]/[0.12]"
-          className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
-        />
-        <ElegantShape
-          delay={0.7}
-          width={150}
-          height={40}
-          rotate={-25}
-          gradient="from-blue-300/[0.10]"
-          className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
+        {/* Subtle grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)`,
+            backgroundSize: "80px 80px",
+          }}
         />
       </div>
-      <div className="relative z-10 container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#174AFF]/[0.06] border border-[#174AFF]/[0.15] mb-8 md:mb-12"
-          >
-            <Circle className="h-2 w-2 fill-[#174AFF]" />
-            <span className="text-sm text-blue-400/80 tracking-wide font-manrope">{badge}</span>
-          </motion.div>
-          <motion.div
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.7 }}
-          >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 md:mb-8 tracking-tight font-manrope">
-              <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">{title1}</span>
-              <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-[#174AFF]">
-                {title2}
-              </span>
-            </h1>
-          </motion.div>
-          <motion.div
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.9 }}
-          >
-            <p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4 font-manrope">
-              Give the AI your idea, niche, or topic and instantly get content angles, scripts, captions, and a posting plan tailored to your audience.
-            </p>
-          </motion.div>
-        </div>
+
+      {/* ── Floating geometric shapes ── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <ElegantShape
+          delay={0.3} width={580} height={130} rotate={12}
+          gradient="from-[#174AFF]/[0.10]"
+          className="left-[-8%] top-[18%]"
+        />
+        <ElegantShape
+          delay={0.5} width={460} height={110} rotate={-14}
+          gradient="from-[#ff29c3]/[0.07]"
+          className="right-[-4%] top-[68%]"
+        />
+        <ElegantShape
+          delay={0.4} width={280} height={72} rotate={-7}
+          gradient="from-[#174AFF]/[0.08]"
+          className="left-[6%] bottom-[12%]"
+        />
+        <ElegantShape
+          delay={0.6} width={190} height={52} rotate={22}
+          gradient="from-[#174AFF]/[0.10]"
+          className="right-[18%] top-[12%]"
+        />
+        <ElegantShape
+          delay={0.7} width={140} height={38} rotate={-28}
+          gradient="from-white/[0.05]"
+          className="left-[24%] top-[8%]"
+        />
+
+        {/* Particles */}
+        {[
+          { x: "20%", y: "30%", d: 0.5 },
+          { x: "75%", y: "20%", d: 1.2 },
+          { x: "60%", y: "70%", d: 0.8 },
+          { x: "35%", y: "80%", d: 2.1 },
+          { x: "85%", y: "50%", d: 1.6 },
+        ].map((p, i) => (
+          <Particle key={i} x={p.x} y={p.y} delay={p.d} />
+        ))}
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B] via-transparent to-[#0B0B0B]/80 pointer-events-none" />
-    </div>
+
+      {/* ── Hero Content ── */}
+      <div className="relative z-10 w-full max-w-[956px] mx-auto px-6 flex flex-col items-center text-center">
+
+        {/* Badge pill — matches Figma pill buttons */}
+        <motion.div
+          custom={0} variants={fadeUp} initial="hidden" animate="visible"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-[66px] mb-8 md:mb-10"
+          style={{
+            background: "rgba(24,73,246,0.09)",
+            boxShadow: "0px 4px 8px -2px rgba(23,23,23,0.1), 0px 2px 4px -2px rgba(23,23,23,0.06)",
+          }}
+        >
+          {/* Animated pulse dot */}
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#174AFF] opacity-60" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#174AFF]" />
+          </span>
+          <span className="text-sm font-semibold text-white/80 font-manrope tracking-wide">
+            {badge}
+          </span>
+        </motion.div>
+
+        {/* Headline */}
+        <motion.h1
+          custom={1} variants={fadeUp} initial="hidden" animate="visible"
+          className="font-manrope font-semibold tracking-[-0.02em] mb-6"
+          style={{ fontSize: "clamp(36px, 6vw, 60px)", lineHeight: "1.2", color: "#f8fafc" }}
+        >
+          <span className="text-white">{title1}</span>
+          <br />
+          <span
+            style={{
+              backgroundImage: "linear-gradient(90deg, #ffffff 0%, #a8c4ff 50%, #174AFF 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            {title2}
+          </span>
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          custom={2} variants={fadeUp} initial="hidden" animate="visible"
+          className="font-satoshi text-[#e3e8ef] max-w-[748px] mb-10"
+          style={{ fontSize: "16px", lineHeight: "26px" }}
+        >
+          {subtitle}
+        </motion.p>
+
+        {/* CTA Buttons — exact Figma button styles */}
+        <motion.div
+          custom={3} variants={fadeUp} initial="hidden" animate="visible"
+          className="flex items-center gap-3 flex-wrap justify-center"
+        >
+          {/* Watch Demo (ghost pill) */}
+          <a
+            href="#demo"
+            className="flex items-center gap-2 rounded-[66px] px-5 py-[10px] text-white font-semibold text-base font-manrope transition-all duration-200 hover:bg-white/10"
+            style={{
+              background: "rgba(24,73,246,0.09)",
+              boxShadow: "0px 4px 8px -2px rgba(23,23,23,0.1), 0px 2px 4px -2px rgba(23,23,23,0.06)",
+            }}
+          >
+            {/* Video icon */}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+            Watch Demo
+          </a>
+
+          {/* Start Creating (gradient pill — exact from Figma) */}
+          <a
+            href="#waitlist"
+            className="flex items-center gap-2 rounded-[66px] px-5 py-[10px] text-white font-semibold text-base font-manrope transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
+            style={{
+              background:
+                "linear-gradient(270deg, #174aff, rgba(24,75,255,0)), linear-gradient(270deg, rgba(24,75,255,0), #174aff), linear-gradient(#000, #000)",
+              boxShadow: "0 0 32px rgba(23,74,255,0.35)",
+            }}
+          >
+            {/* Sparkle icon */}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+            </svg>
+            Start Creating
+          </a>
+        </motion.div>
+
+        {/* Social proof */}
+        <motion.div
+          custom={4} variants={fadeUp} initial="hidden" animate="visible"
+          className="flex items-center gap-3 mt-8"
+        >
+          <div className="flex -space-x-2">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="w-8 h-8 rounded-full border-2 border-[#174AFF]/30"
+                style={{ background: `rgba(23,74,255,${0.08 + i * 0.04})` }}
+              />
+            ))}
+          </div>
+          <span className="text-sm font-satoshi text-white/40">
+            Join realtors getting early access
+          </span>
+        </motion.div>
+      </div>
+
+      {/* Bottom fade-out */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0b0b0b] to-transparent pointer-events-none" />
+    </section>
   )
 }
 
