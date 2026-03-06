@@ -57,8 +57,8 @@ function FeatureGrid() {
     },
     {
       icon: <Users className="w-6 h-6 text-[#174AFF]" />,
-      title: "Unlimited Content Storage",
-      description: "Save unlimited AI-generated ideas, scripts, and posts organized in folders. Your entire content library in one place.",
+      title: "Content Storage",
+      description: "Save and organize your AI-generated ideas, scripts, and post templates in one place — always ready when you need them.",
     },
     {
       icon: <BookOpen className="w-6 h-6 text-[#174AFF]" />,

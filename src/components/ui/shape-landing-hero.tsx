@@ -1,7 +1,9 @@
 "use client"
 
 import { motion, Variants } from "framer-motion"
+import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import { ShinyButton } from "@/components/ui/shiny-button"
 
 // ─── Floating Blob Shape (matches Figma eclipse blobs) ───────────────────────
 function ElegantShape({
@@ -67,18 +69,43 @@ function Particle({ delay, x, y }: { delay: number; x: string; y: string }) {
   )
 }
 
+function useCountdown(target: Date) {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+
+  useEffect(() => {
+    const calc = () => {
+      const diff = target.getTime() - Date.now()
+      if (diff <= 0) return setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+      setTimeLeft({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
+      })
+    }
+    calc()
+    const id = setInterval(calc, 1000)
+    return () => clearInterval(id)
+  }, [target])
+
+  return timeLeft
+}
+
 // ─── Main Hero Component ──────────────────────────────────────────────────────
 function HeroGeometric({
   badge = "AI-Powered Content Creation",
-  title1 = "Turn Your Ideas into",
-  title2 = "Ready-to-Post Content",
-  subtitle = "Give the AI your idea, niche, or topic and instantly get content angles, scripts, captions, post formats, and a posting plan tailored to your audience.",
+  title1 = "N1 tool for realtors",
+  title2 = "building their personal brands",
+  subtitle = "Let our AI generate video ideas, hooks, scripts, captions and schedule your videos all in one place.",
 }: {
   badge?: string
   title1?: string
   title2?: string
   subtitle?: string
 }) {
+  const launchDate = new Date("2026-04-01T00:00:00")
+  const timeLeft = useCountdown(launchDate)
+
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 32 },
     visible: (i = 0) => ({
@@ -224,62 +251,42 @@ function HeroGeometric({
           {subtitle}
         </motion.p>
 
-        {/* CTA Buttons — exact Figma button styles */}
+        {/* Join the waitlist CTA */}
         <motion.div
           custom={3} variants={fadeUp} initial="hidden" animate="visible"
-          className="flex items-center gap-3 flex-wrap justify-center"
+          className="flex flex-col items-center gap-6"
         >
-          {/* Watch Demo (ghost pill) */}
-          <a
-            href="#demo"
-            className="flex items-center gap-2 rounded-[66px] px-5 py-[10px] text-white font-semibold text-base font-manrope transition-all duration-200 hover:bg-white/10"
-            style={{
-              background: "rgba(24,73,246,0.09)",
-              boxShadow: "0px 4px 8px -2px rgba(23,23,23,0.1), 0px 2px 4px -2px rgba(23,23,23,0.06)",
-            }}
-          >
-            {/* Video icon */}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polygon points="5 3 19 12 5 21 5 3" />
-            </svg>
-            Watch Demo
-          </a>
+          <ShinyButton href="#waitlist">Join the waitlist</ShinyButton>
 
-          {/* Start Creating (gradient pill — exact from Figma) */}
-          <a
-            href="#waitlist"
-            className="flex items-center gap-2 rounded-[66px] px-5 py-[10px] text-white font-semibold text-base font-manrope transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
-            style={{
-              background:
-                "linear-gradient(270deg, #174aff, rgba(24,75,255,0)), linear-gradient(270deg, rgba(24,75,255,0), #174aff), linear-gradient(#000, #000)",
-              boxShadow: "0 0 32px rgba(23,74,255,0.35)",
-            }}
-          >
-            {/* Sparkle icon */}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
-            </svg>
-            Start Creating
-          </a>
-        </motion.div>
-
-        {/* Social proof */}
-        <motion.div
-          custom={4} variants={fadeUp} initial="hidden" animate="visible"
-          className="flex items-center gap-3 mt-8"
-        >
-          <div className="flex -space-x-2">
-            {[0, 1, 2].map((i) => (
-              <div
-                key={i}
-                className="w-8 h-8 rounded-full border-2 border-[#174AFF]/30"
-                style={{ background: `rgba(23,74,255,${0.08 + i * 0.04})` }}
-              />
+          {/* Countdown to April 1st */}
+          <div className="flex gap-3">
+            {(["days", "hours", "minutes", "seconds"] as const).map((unit) => (
+              <div key={unit} className="text-center">
+                <div className="bg-white/[0.04] border border-[#174AFF]/20 rounded-lg px-3 py-2 min-w-[60px]">
+                  <div className="text-xl font-bold text-[#174AFF] font-manrope">
+                    {timeLeft[unit].toString().padStart(2, "0")}
+                  </div>
+                  <div className="text-[10px] text-gray-500 uppercase tracking-wider font-manrope">{unit}</div>
+                </div>
+              </div>
             ))}
           </div>
-          <span className="text-sm font-satoshi text-white/40">
-            Join realtors getting early access
-          </span>
+
+          {/* Social proof */}
+          <div className="flex items-center gap-3">
+            <div className="flex -space-x-2">
+              {[0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  className="w-8 h-8 rounded-full border-2 border-[#174AFF]/30"
+                  style={{ background: `rgba(23,74,255,${0.08 + i * 0.04})` }}
+                />
+              ))}
+            </div>
+            <span className="text-sm font-manrope text-white/50">
+              Join 100s of realtors getting early access
+            </span>
+          </div>
         </motion.div>
       </div>
 

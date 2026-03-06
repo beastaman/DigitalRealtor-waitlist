@@ -32,7 +32,7 @@ const COUNTRY_CODES = [
 ]
 
 function WaitlistForm() {
-  const [formData, setFormData] = useState({ name: "", email: "", countryCode: "+1", phone: "" })
+  const [formData, setFormData] = useState({ name: "", email: "", countryCode: "+971", phone: "" })
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")

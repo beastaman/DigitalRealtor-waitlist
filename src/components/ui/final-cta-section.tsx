@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
-import { Sparkles, Clock, Zap, ArrowRight, CheckCircle } from "lucide-react"
+import { Clock, Zap, CheckCircle } from "lucide-react"
+import { ShinyButton } from "@/components/ui/shiny-button"
 
 function FinalCTASection() {
   const [timeLeft, setTimeLeft] = useState({ days: 7, hours: 12, minutes: 30, seconds: 45 })
@@ -125,17 +126,7 @@ function FinalCTASection() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <motion.a
-              href="#waitlist"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-4 px-12 py-5 text-white font-bold text-xl rounded-full transition-all duration-300 shadow-2xl shadow-[#174AFF]/25 font-manrope"
-              style={{ background: "linear-gradient(135deg, #174AFF 0%, #1E5AFF 100%)" }}
-            >
-              <Sparkles className="w-6 h-6" />
-              Start Creating Now
-              <ArrowRight className="w-6 h-6" />
-            </motion.a>
+            <ShinyButton href="#waitlist">Join the waitlist</ShinyButton>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-400">
               <div className="flex items-center gap-2">
                 <Zap className="w-5 h-5 text-[#174AFF]" />

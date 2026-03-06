@@ -16,7 +16,7 @@ function FounderSection() {
         >
           <div className="mb-8">
             <Quote className="w-12 h-12 text-[#174AFF] mx-auto mb-6" />
-            <blockquote className="text-2xl lg:text-3xl text-gray-300 font-light leading-relaxed mb-8 font-manrope">
+            <blockquote className="text-lg lg:text-xl text-gray-300 font-light leading-relaxed mb-8 font-manrope">
               &ldquo;I&apos;ve helped realtors generate over $300M in sales by building powerful personal brands on social media.
               The biggest problem wasn&apos;t talent — it was consistency. That&apos;s why I built Digital Realtor: to give every
               agent an AI content team that never sleeps.&rdquo;
@@ -32,16 +32,13 @@ function FounderSection() {
             <div className="text-center md:text-left">
               <h3 className="text-xl font-semibold text-white mb-2 font-manrope">Abdelrahman Abd Rabou</h3>
               <p className="text-[#174AFF] mb-2 font-manrope">Founder — Digital Realtor & A-Team Management</p>
-              <p className="text-gray-400 text-sm mb-2 font-manrope">
-                @tamerbranding on Instagram • 14.3K followers • 180 posts
-              </p>
               <p className="text-gray-400 text-sm font-manrope">
                 I help realtors build a personal brand • $300M+ in Sales Generated in 2025
               </p>
             </div>
           </div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -55,7 +52,7 @@ function FounderSection() {
               creator-focused workflows to make content creation faster, easier, and more consistent for everyone.
               You handle the face-to-face. Your new AI content team will handle the rest.
             </p>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>
