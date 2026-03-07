@@ -6,18 +6,22 @@ import { Clock, Zap, CheckCircle } from "lucide-react"
 import { ShinyButton } from "@/components/ui/shiny-button"
 
 function FinalCTASection() {
-  const [timeLeft, setTimeLeft] = useState({ days: 7, hours: 12, minutes: 30, seconds: 45 })
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 }
-        else if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 }
-        else if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 }
-        else if (prev.days > 0) return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 }
-        return prev
+    const launchDate = new Date("2026-04-01T00:00:00")
+    const calc = () => {
+      const diff = launchDate.getTime() - Date.now()
+      if (diff <= 0) return setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+      setTimeLeft({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
       })
-    }, 1000)
+    }
+    calc()
+    const timer = setInterval(calc, 1000)
     return () => clearInterval(timer)
   }, [])
 
