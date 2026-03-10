@@ -78,7 +78,7 @@ function FreeTrialSection() {
                   ))}
                 </ul>
 
-                <ShinyButton href="#waitlist">Start Free Trial</ShinyButton>
+                <ShinyButton href="#waitlist">Join the Waitlist</ShinyButton>
               </div>
 
               {/* Right: card visual */}
