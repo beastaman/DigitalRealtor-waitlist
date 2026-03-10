@@ -6,6 +6,7 @@ import { FeatureGrid } from "@/components/ui/feature-grid"
 import { FounderSection } from "@/components/ui/founder-section"
 import { FinalCTASection } from "@/components/ui/final-cta-section"
 import CTA from "@/components/ui/cta"
+import { FreeTrialSection } from "@/components/ui/free-trial-section"
 
 // ─── Reusable gradient blob ───────────────────────────────────────────────────
 function Blob({
@@ -205,6 +206,8 @@ export default function WaitlistPage() {
           {/* 6. FEATURE GRID */}
           <FeatureGrid />
 
+          {/* FREE TRIAL */}
+          <FreeTrialSection />
 
           {/* 8. FOUNDER */}
           <FounderSection />
