@@ -103,7 +103,7 @@ function HeroGeometric({
   title2?: string
   subtitle?: string
 }) {
-  const launchDate = new Date("2026-04-01T00:00:00")
+  const launchDate = new Date("2026-04-03T00:00:00")
   const timeLeft = useCountdown(launchDate)
 
   const fadeUp: Variants = {

@@ -1,12 +1,14 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import { HeroGeometric } from "@/components/ui/shape-landing-hero"
-import { WaitlistForm } from "@/components/ui/waitlist-form"
-import { FeatureGrid } from "@/components/ui/feature-grid"
-import { FounderSection } from "@/components/ui/founder-section"
-import { FinalCTASection } from "@/components/ui/final-cta-section"
-import CTA from "@/components/ui/cta"
-import { FreeTrialSection } from "@/components/ui/free-trial-section"
+
+const CTA = dynamic(() => import("@/components/ui/cta"), { ssr: false })
+const WaitlistForm = dynamic(() => import("@/components/ui/waitlist-form").then(m => ({ default: m.WaitlistForm })))
+const FeatureGrid = dynamic(() => import("@/components/ui/feature-grid").then(m => ({ default: m.FeatureGrid })))
+const FreeTrialSection = dynamic(() => import("@/components/ui/free-trial-section").then(m => ({ default: m.FreeTrialSection })))
+const FounderSection = dynamic(() => import("@/components/ui/founder-section").then(m => ({ default: m.FounderSection })))
+const FinalCTASection = dynamic(() => import("@/components/ui/final-cta-section").then(m => ({ default: m.FinalCTASection })))
 
 // ─── Reusable gradient blob ───────────────────────────────────────────────────
 function Blob({
@@ -205,9 +207,6 @@ export default function WaitlistPage() {
 
           {/* 6. FEATURE GRID */}
           <FeatureGrid />
-
-          {/* FREE TRIAL */}
-          <FreeTrialSection />
 
           {/* 8. FOUNDER */}
           <FounderSection />

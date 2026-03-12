@@ -9,7 +9,7 @@ function FinalCTASection() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
-    const launchDate = new Date("2026-04-01T00:00:00")
+    const launchDate = new Date("2026-04-03T00:00:00")
     const calc = () => {
       const diff = launchDate.getTime() - Date.now()
       if (diff <= 0) return setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
