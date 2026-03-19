@@ -61,11 +61,11 @@ function WaitlistForm() {
             You&apos;re In — Let&apos;s Create!
           </h1>
           <p className="text-gray-300 max-w-lg mx-auto text-lg text-center relative z-10 mb-6 font-manrope">
-            You&apos;re now part of an exclusive group of forward-thinking realtors. Check your email for next steps!
+            Thanks for joining the waitlist — we will get back to you soon!
           </p>
           <div className="inline-flex items-center gap-2 border border-blue-500/20 rounded-full px-4 py-2" style={{ background: "rgba(33,33,33,0.6)" }}>
             <Sparkles className="w-4 h-4 text-[#174AFF]" />
-            <span className="text-sm text-blue-400 font-medium font-manrope">Confirmation email sent</span>
+            <span className="text-sm text-blue-400 font-medium font-manrope">You&apos;re on the list</span>
           </div>
         </motion.div>
         <BackgroundBeams />
